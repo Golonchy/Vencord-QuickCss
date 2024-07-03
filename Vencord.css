@@ -1,0 +1,520 @@
+/*forum improvements*/
+@import url("https://minidiscordthemes.github.io/Snippets/ForumImprovements/main.css");
+
+/*re-clolors lock icon so its more visible*/
+@import url("https://raw.githubusercontent.com/KrstlSkll69/vc-snippets/main/PrivateChannelRecolor.css");
+
+/*makes nsfw-cautious tags mor noticble in chanel name*/
+@import url("https://raw.githubusercontent.com/KrstlSkll69/vc-snippets/main/NSFWChannelRecolor.css");
+
+/* Add danger colours to dangerous user actions */
+#user-context-close-dm, #user-context-remove-friend, #user-context-block { color: var(--status-danger) }
+#user-context-close-dm:active, #user-context-remove-friend:active, #user-context-block:active {
+    background-color: var(--red-500)!important;
+    color: var(--white-500)!important;    
+}
+#user-context-close-dm[class*="focused-"], #user-context-remove-friend[class*="focused-"], #user-context-block[class*="focused-"] {
+    background-color: var(--button-danger-background);
+    color: var(--white-500);   
+}
+
+/* ShowMeYourName plugin */
+.vc-smyn-suffix:before {
+    content: "| @" !important
+}
+.vc-smyn-suffix:after {
+    content: "" !important
+}
+.vc-smyn-suffix {
+    color: currentColor !important;
+    opacity: 0.5
+}
+/* Username */
+.username_ec86aa, 
+.base_d7ebeb .text_d7ebeb strong, 
+.name_b11c5e {
+    filter: brightness(1.25);
+    margin-right: 4px;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+/*Small Member list*/
+.container_cbd271 {
+  transition: margin 0.1s;
+  margin-right: -180px;
+}
+.container_cbd271 .membersGroup_cbd271 {
+  transition: margin 0.1s;
+  height: 0px!important;
+  margin-top: -25px;
+}
+.container_cbd271:hover .membersGroup_cbd271 {
+  height: unset!important;
+  margin-top: unset!important;
+}
+.container_cbd271:hover{
+  margin-right: unset!important;
+}
+
+/*shows url even when masked*/
+.anchor_af404b[title$=")"]::after {
+    font-size: 0.7rem;
+    content: " (" attr(href) ")";
+    filter: grayscale(0.4);
+}
+
+/*removes the "x in voice" box*/
+[class^=bar__]:has([class^=voiceChannelsIcon__]) {
+    display: none;
+}
+.bar_eba0ba{
+  display: none;
+}
+
+/*make decors vanish when hovering over them*/
+[class^=avatar_]:hover + [class^=avatarDecoration_],
+[class^=avatar_]:hover [class^=avatarDecoration_]
+ { opacity: 0 !important; }
+[class^=avatarDecoration_]
+ { transition: .3s opacity; }
+
+/*settings has its own window*/
+.standardSidebarView_c25c6d
+ { top: 0 !important; }
+.layer_d4b6c5 + .layer_d4b6c5
+ { border-radius: 10px !important;
+   box-shadow: 5px 5px 25px black;
+   border: 1px solid var(--border-strong);
+   width: 1100px !important;
+   height: 80vh !important;
+   margin: auto !important;
+   padding: 0 !important; }
+#app-mount .baseLayer_d4b6c5 /*keep view under settings*/
+ { opacity: 1 !important;
+   transform: unset !important; }
+
+/*removes discord animations when opening settings*/
+#app-mount .baseLayer_d4b6c5 {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+ }
+.baseLayer_d4b6c5[aria-hidden="true"] {
+   pointer-events: none;
+}
+.standardSidebarView_c25c6d {
+  opacity: 1 !important;
+}
+.layer_d4b6c5 + .layer_d4b6c5 {
+   opacity: 1 !important;
+   transform: unset !important;
+ }
+.layer_d4b6c5[aria-hidden="false"] + .layer_d4b6c5[aria-hidden="false"] {
+  display: none;
+}
+.baseLayer_d4b6c5[aria-hidden="true"] {
+   pointer-events: none;
+}
+.layers_d4b6c5>.layer_d4b6c5.animating_d4b6c5 {
+  will-change: unset !important;
+}
+
+/*improves dashless chanels*/
+@font-face
+ { font-family: "Twemoji Mozilla";
+   src: url("https://vendicated.github.io/random-files/Twemoji.Mozilla.ttf") format("truetype");
+   unicode-range: U+1F1E6-1F1FF; }
+@font-face
+ { font-family: "dashless";
+   size-adjust: 100%; /*adjust this to change word spacing*/
+   src: url("https://vendicated.github.io/random-files/Dashless.woff2") format("woff2");
+   unicode-range: U+002D; }
+[data-list-item-id^=channels___]:not([role=button]), /* channel list */
+[class^=titleWrapper] > h1, /* top bar with topic */
+[class^=titleWrapper] > h2, /* top bar in thread view */
+[id^=":r"] > h1, /* topic popup */
+[class^=resultChannel], [class^=channelNameContainer_], [class^=searchAnswer_], /* search */
+[class^=autocompleteRowContent_] [class*=autocompleteRowHeading_], /* chat autocomplete */
+.channelWithIcon, /* channel mentions in chat */
+[class^=emptyChannelIcon_] + h3, /* start of new channel */
+[class^=emptyChannelIcon_] ~ [class*=description_],
+[class^=browser_] [class*=channelText_], /* channel browser*/
+[class^=returnButton_] [class^=text-], /*return button in channel browser*/
+[class^=placeholder][class*=slateTextArea], /* chat input placeholder text */
+[class^=auditLog_] [class^=overflowEllipsis_] strong, /* audit log */
+.vc-permviewer-perms-title, /* permissionsviewer */
+[class^=headerChannelContainer_] > div, /* invite to channel dialog */
+[class^=uploadDropModal_] strong, /* file drag upload */
+[class^=channelNameSpan_], /* inbox */
+[class^=quickswitcher_] [class^=name_] /* ctrl+k */
+ { font-family: "Twemoji Mozilla", "dashless", var(--font-primary); }
+[class^=emptyChannelIcon_] ~ [class*=description_] > *
+ { font-family: var(--font-primary); }
+
+/*disable superreaction pop up when clicking on one*/
+.reaction_ec6b19[style*="background"] {
+  pointer-events: none;
+}
+
+/*everthing spotify controls related*/
+/* Spotify grabber circle (music slider) */
+#vc-spotify-progress-bar>[class^=slider] [class^=grabber] {
+    background-color: red !important;
+    border-color: yellow !important;
+}
+#vc-spotify-player {
+    --blur-amount: 2px; /* higher px = stronger blur, 0 = no blur */
+    --darken-percent: 0.8; /* 0 = album cover is not darkened, 1 = album cover is darkened fully (black) */
+}
+#vc-spotify-player {
+    --blur-amount: 0px; /* higher px = stronger blur, 0 = no blur */
+    --darken-percent: 0.8; /* 0 = album cover is not darkened, 1 = album cover is darkened fully (black) */
+}
+/*spotify album cover*/
+#vc-spotify-player {
+    background: transparent !important;
+    position: relative;
+}
+
+#vc-spotify-player > * {
+    position: relative;
+    z-index: 1;
+}
+
+#vc-spotify-player::after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 200%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(0, 0, 0, var(--darken-percent)),
+            rgba(0, 0, 0, var(--darken-percent))), var(--vc-spotify-track-image);
+    background-size: cover;
+    filter: blur(var(--blur-amount));
+    clip-path: inset(0);
+}
+#vc-spotify-player + [class^="container"] {
+    background: transparent;
+}
+
+
+
+/*spotify mini icons*/
+#vc-spotify-titles {
+  margin-left: 12px;
+}
+#vc-spotify-song-title::before,
+#vc-spotify-song-title + div::before,
+#vc-spotify-song-title + div + div::before {
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  padding: 7px;
+  margin-left: -17px;
+  margin-top: 2px;
+  content: '';
+  background-color: var(--header-primary);
+  /* Spotify wave thingy fix */
+  /*background-color: hsla(var(--spotify-vencord-text)/1);*/
+  position: absolute;
+}
+#vc-spotify-song-title + div::before,
+#vc-spotify-song-title + div + div::before {
+   background-color: var(--header-secondary);
+  /* Spotify wave thingy fix */
+  /*background-color: hsla(var(--spotify-vencord-text)/1);*/
+}
+#vc-spotify-song-title::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-music-4'%3E%3Cpath d='M9 18V5l12-2v13'%3E%3C/path%3E%3Cpath d='m9 9 12-2'%3E%3C/path%3E%3Ccircle cx='6' cy='18' r='3'%3E%3C/circle%3E%3Ccircle cx='18' cy='16' r='3'%3E%3C/circle%3E%3C/svg%3E");
+}
+#vc-spotify-song-title + div::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-mic'%3E%3Cpath d='M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z'%3E%3C/path%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'%3E%3C/path%3E%3Cline x1='12' x2='12' y1='19' y2='22'%3E%3C/line%3E%3C/svg%3E");
+}
+#vc-spotify-song-title + div + div::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-disc-2'%3E%3Ccircle cx='12' cy='12' r='4'%3E%3C/circle%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='12' x2='12' y2='12.01'%3E%3C/line%3E%3C/svg%3E");
+}
+
+
+
+/* Automatically resizing gif picker */
+:root {
+    /* Change me! */
+    --expression-picker-aspect-ratio: 1.125 / 1;
+}
+[class*="expressionPickerPositionLayer_"] [class*="positionContainer_"] {
+    height: calc(100vh - 128px);
+}
+[class*="expressionPickerPositionLayer_"] [class*="drawerSizingWrapper_"] {
+    max-height: 100%;
+    bottom: 0px;
+    height: auto;
+    aspect-ratio: var(--expression-picker-aspect-ratio);
+}
+/* Fixes soundmoji picker which has a hardcoded height */
+[class*="expressionPickerPositionLayer_"] [class*="soundboardContainer_"] [class*="picker_"] {
+    height: 100%;
+}
+
+/*fixes mosiac zoom*/
+[class^="imageWrapper_"] img[class^="lazyImg"] { object-fit: contain !important; }
+
+/*extends badge line if it makes a 2nd line*/
+.profileBadges_f89da9.profileBadges_f89da9 {
+  flex: none;
+}
+
+/*changing laoding screen discord animation*/
+.container_e40c16 video.ready_e40c16 {
+    display: none;
+}
+.content_e40c16::before {
+    visibility: visible;
+    content: '';
+    display: block;
+    background: url(https://cdn.discordapp.com/attachments/1204335419185954880/1223839938794098770/vvgSk50ojJ1BTwwAQm.gif?ex=66248b43&is=66121643&hm=2031b3d4a92828dac6ac3ba98b128e144ab5917c95087fb53ecc5326c19746fe&);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 128px;
+    height: 128px;
+    margin: auto;
+    margin-bottom: 48px;
+}
+
+/*removes nitro bullshit*/
+[class^=channel_] > div > [href="/store"],
+[class^=channel_] > div > [href="/shop"],
+[class^=channelTextArea] [class^=buttons_] > button,
+[class^=upsellVisible_],
+[class^=premiumIconWrapper],
+[class^=characterCount_] [class*=upsell_],
+[class^=emojiSection_] [class*=shinyButton_],
+[class*=tryItOutSection_],
+[class^=premiumIcon],
+[class^=customizationSection_] + [class^=upsellContainer_],
+[class^=customizationSection_][class*=disabled_],
+[class*=bannerNitroUpsell_],
+[class^=imageUploaderHint_],
+[class^=imagePickerContainer_] > [class^=optionBox_]:nth-child(2) {
+  display: none !important;
+}
+[class^=premiumTab],
+#user-settings-cog-Discord_Nitro,
+#user-settings-cog-Billing,
+[class^=subscribeAction],
+[class^=upsellBanner],
+[class^=userPopoutInner] > [class^=wrapper] > [class^=banner],
+[class^=userPopoutInner] > [class^=containerWrapper],
+[class*=premiumFeatureBannerBackground], [class^=container_]:has([class^=artContainer_]),
+[class*=premiumFeatureBorder], [class^=customizationSection__]:has([class^=nitroWheel__]),
+[class^=userPanelInner] > [class*=inSidebar],
+[class^=messageLengthUpsellContainer_],
+a[href*="/snowsgiving"], [class^=customizationSection] > [class^=limitedFeatureBorder],
+[class*=botTagRemix_],
+[class^=nitroFileSizeUpsell__],
+[class^=upsellOverlayContainer_],
+[class*=sansAttachButton] > [class^=buttons] > [class^=container],
+[id^=popout] [class*=contentPremium],
+[class^=birthdayFeatureBorder],
+[class^=nitroAuthorBadgeContainer_],
+[class^=container_]:has([class^=falloweenArtContainer_]),
+[class^=sidebar] > [class^=container] > [class^=wrapper] > [class^=container] > [class^=content],
+[class^=themeEditor],
+[class*=cozyMessage] > [class*=buttonContainer] > [class*=buttons] > [class*=wrapper] > [aria-label*="Add Super Reaction"],
+[id^=popout] [class*=colorPremiumGradient],
+#message [class*=colorPremiumGradient],
+[class^=notAppAsidePanel__] > [class^=layerContainer_] > [id^=popout_] > [class^=animatorRight__] > div:has([class*=artInline_]),
+[class^=notAppAsidePanel__] > [class^=layerContainer_] > [id^=popout_] > [class^=animatorBottom_] > div:has(.image_fcfd9f),
+[class^=burstReactionTooltipPrompt],
+#emoji-picker-tab-panel [class^=burstToggle],
+[class^=questsContainer__],
+[aria-label="Add Super Reaction"],
+[aria-label=GET_PREMIUM],
+[class^=emojiPickerListWrapper_] [class^=upsellContainer__],
+button:has([class*=premiumSubscribeButton]),
+[class*=autocompleteInner__]:has([class*=premiumHeader_]) [class*=nitroTopDividerContainer__], [class*=autocompleteInner__]:has([class*=premiumHeader_]) [class*=premiumHeader_], [class*=autocompleteInner__]:has([class*=premiumHeader_]) [class*=premiumHeader_] ~ [class*=premiumEmoji__],
+[class^=giftButtonContainer__],
+[class^=accountProfilePopoutWrapper_] > [class^=popoutContainer__] > [class^=container__],
+[class^=side_] > [class^=header_] + [class^=premiumTab] + [class^=item_] + [class^=item_] + [class^=item_] + [class^=item_],
+#emoji-picker-tab-panel > [class*=emojiPickerHeader]:first-child > [class^=tooltipContainer]:nth-child(2) {
+  display: none !important;
+}
+[class^=emojiSection] > div > div > div > a {
+  color: inherit;
+  pointer-events: none;
+}
+[class^=reactionInner][aria-label*="burst react"] {
+  pointer-events: none;
+}
+[class*=categorySectionNitroLocked_] {
+  background-color: unset !important;
+}
+[class^=userPopoutInner] > [class^=containerWrapper] {
+  top: 0 !important;
+}
+[class*=upsell] {
+    display: none !important;
+}
+/* Hides the Billing Settings stuff from discord settings */
+div.header_a0:nth-of-type(10),
+div.themed_a0.item_a0:nth-of-type(12),
+div.themed_a0.item_a0:nth-of-type(13),
+div.themed_a0.item_a0:nth-of-type(14),
+div.themed_a0.item_a0:nth-of-type(15),
+div.separator_a0:nth-of-type(9),
+div.background_ae3c77,
+div.themed_a0.item_a0.premiumTab_c10c74 {
+  display: none;
+}
+
+/*no super-reacts animation*/
+.hideEmoji_ec6b19 {
+  opacity: 1;
+}
+.effect_e5651 svg,
+.effect_e5651 {
+  transform: none !important;
+}
+.effect_e5651 g {
+  clip-path: none !important;
+  transform: none;
+  opacity: 0;
+}
+.reaction_ec6b19.shakeReaction_ec6b19 {
+  animation: none !important;
+}
+
+/* Rounded Context Menu and embeds */
+.menu_d90b3d, .colorDefault_d90b3d { 
+    border-radius: 15px; 
+}
+#app-mount .embedFull_ad0b71 {
+    border: 3px solid;
+    border-radius: 15px;
+}
+
+/* --Improved User Area-- */
+/* Make both the username and status message visible at all times. */
+.container_b2ca13 .hovered_c0d6c6, .hoverRoll_c0d6c6.forceHover_c0d6c6:not(.disabled_c0d6c6) .default_c0d6c6{
+  opacity: 1!important;
+  transform: none;
+}
+/* Adds an @ to the username. Discord, for the love of god, just add this yourself already. */
+.container_b2ca13 .hovered_c0d6c6::before{
+  content: "@";
+}
+/* Move the custom Status message down so that it doesnt overlap with the Username */
+.default_c0d6c6{
+  margin-top: 15px;
+}
+/* --Hides User Buttons until Hover-- */
+/* Hide mute and deafen buttons */
+.panels_a4d4d9 > .container_b2ca13 .flex_bba380 > :not(:last-child) {
+  opacity: 0% !important;
+  width: 0px;
+  transition: all 0.3s ease-in-out;
+}
+/* Reveal mute and Deafen buttons when settings button is hovered */
+.panels_a4d4d9 > .container_b2ca13 .flex_bba380:hover > :not(:last-child) {
+  opacity: 100% !important;
+  width: 32px;
+}
+/* Resize and move the profile button to take up all the space it can to look clean. */
+.avatarWrapper_b2ca13{
+  transition: all 0.3s ease-in-out;
+  width: 100%!important;
+  margin-left: -10px;
+  height: 53px;
+  border-radius: 0!important;
+}
+/* Move the avatar back to the right a bit to look clean. */
+.avatarWrapper_b2ca13 .avatar_b2ca13{
+  margin-left: 10px;
+}
+
+/*have a sleeping oneko on your chat box*/
+[class^="channelTextArea_"]::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    bottom: calc(100% - 4px); /* Mess with the - 3px to change its vertical position */
+    right: 10px; /* Switch this from right to left to put it on the left side, or increase/decrease to change its position */
+    position: absolute;
+    image-rendering: pixelated;
+    pointer-events: none;
+    background-image: url("https://raw.githubusercontent.com/adryd325/oneko.js/14bab15a755d0e35cd4ae19c931d96d306f99f42/oneko.gif");
+    animation: oneko 1s infinite; /* change 1s to make the animation slower/faster */
+}
+@keyframes oneko {
+    /*
+    if you open the background image in ur browser, you will see that it has way more frames
+    so if you want, you could make ur own keyframes for a different animation
+    the top left frame is 0 0, second top row is -32 0, second row second is -32 -32 and so on
+    the ...00001% makes it so that there's no transition between the frames, so if you wanted say 3 frames, you'd do 0%, 33.3%; 33.30001%, 66.6%; 66.60001%, 100%
+    */
+    0%, 50% {
+        background-position: -64px 0;
+    }
+    50.0001%, 100% {
+        background-position: -64px -32px;
+    }
+}
+
+/*Simply hides the reaction counter if only ONE reaction is present. Aslo works on Super Reactions*/
+.reaction_ec6b19:has(.reactionInner_ec6b19[aria-label*="1 reaction"], .reactionInner_ec6b19[aria-label*="1 super reaction"]) .reactionCount_ec6b19 {display: none;}
+
+/*make threads only visible until you hover other the chanel they are in*/
+.containerDefault_f6f816:hover + .container_e1e976, .container_e1e976:hover {
+  max-height: 1000px; /* Make the threads Slide down */
+  transition: max-height 1s ease; }
+.container_e1e976 {
+  max-height: 0; /* Initially hide the threads by setting their max-height to 0 */
+  overflow: hidden; 
+  transition: max-height 0.25s ease; 
+}
+
+/*discord  clear loading page*/
+.container_e40c16.fixClipping_c7e9c6{
+    background: 0 0;
+    backdrop-filter: blur(5px);
+}
+
+/*dim server muted/server deafened icons*/
+[aria-label="Mute"] [aria-hidden="true"],
+[aria-label="Deafen"] [aria-hidden="true"]{
+  opacity: 0.4;
+}
+
+/*full height gif menu so i can see all my cat gifs at once, you can change with moving the edges*/
+.contentWrapper_af5dbb {
+  height: calc(100vh - 180px);
+}
+
+/*moves vc hang status to the left*/
+[class^="iconGroup"]:has([class*="hangStatusIcon"]){
+  position:absolute;
+  right:196px;
+}
+[aria-label="Add a status"], [aria-label*="Playing"] {
+  position:absolute;
+  right:198px;
+}
+
+/*remove locked emojis*/
+#emoji-picker-tab-panel .listWrapper_a3bc57 .scroller_dcade6 {
+  height: 5000px; /* It is recommended to set the minimum value that works for you */
+}
+#emoji-picker-tab-panel .scroller_dcade6 {
+  height: 1000px; /* It is recommended to set the minimum value that works for you */
+}
+.categorySectionNitroLocked_a3bc57,
+.nitroTopDividerContainer_e8f337,
+.listItems_dcade6>div:has(.categoryItemLockIconContainer_bfabc4){
+  display: none;
+}
+notice__5fd4c{
+  display: none;
+}
+
+
